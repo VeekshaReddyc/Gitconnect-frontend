@@ -122,6 +122,83 @@ function MyGigs() {
     }
   }
 
+  // Delete a draft gig.
+  async function deleteGig(gigId) {
+    if (!user?.id) {
+      setError("User information is missing. Please log in again.");
+      return;
+    }
+
+    const gig = gigs.find(
+      (item) => String(item.id) === String(gigId)
+    );
+
+    if (!gig) {
+      setError("Gig not found. Refresh the page and try again.");
+      return;
+    }
+
+    if (String(gig.status || "").toUpperCase() !== "DRAFT") {
+      setError("Only draft gigs can be deleted from this page.");
+      return;
+    }
+
+    const confirmed = window.confirm(
+      `Are you sure you want to delete "${gig.title}"?\n\nThis action cannot be undone.`
+    );
+
+    if (!confirmed) return;
+
+    setProcessingGigId(gigId);
+    setError("");
+    setNotice("");
+
+    try {
+      const response = await fetch(
+        `${API_URL}/${gigId}?clientId=${encodeURIComponent(user.id)}`,
+        {
+          method: "DELETE",
+          headers: {
+            Accept: "application/json",
+          },
+        }
+      );
+
+      await readResponse(response);
+
+      setGigs((previous) =>
+        previous.filter(
+          (item) => String(item.id) !== String(gigId)
+        )
+      );
+
+      setApplications((previous) => {
+        const updated = { ...previous };
+        delete updated[gigId];
+        return updated;
+      });
+
+      setNotice("Draft gig deleted successfully.");
+    } catch (err) {
+      setError(
+        err.message ||
+          "Unable to delete the gig. Please try again."
+      );
+    } finally {
+      setProcessingGigId(null);
+    }
+  }
+
+  // Open the edit page for a draft gig.
+  function editGig(gig) {
+    if (String(gig.status || "").toUpperCase() !== "DRAFT") {
+      setError("Only draft gigs can be edited from this page.");
+      return;
+    }
+
+    navigate(`/edit-gig/${gig.id}`);
+  }
+
   async function viewApplications(gigId) {
     if (!user?.id) {
       setError("User information is missing. Please log in again.");
@@ -224,7 +301,9 @@ function MyGigs() {
         )}`,
         {
           method: "PUT",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
       );
 
@@ -265,7 +344,9 @@ function MyGigs() {
         )}`,
         {
           method: "PUT",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
       );
 
@@ -289,7 +370,9 @@ function MyGigs() {
       return;
     }
 
-    const comments = String(revisionComments[gigId] || "").trim();
+    const comments = String(
+      revisionComments[gigId] || ""
+    ).trim();
 
     if (!comments) {
       setError("Please enter revision instructions before submitting.");
@@ -347,7 +430,7 @@ function MyGigs() {
     }
   }
 
-  // Record the payment through the backend.
+  // Record payment through the backend.
   async function recordPayment(gig) {
     if (!user?.id) {
       setError("Client ID is missing. Please log in again.");
@@ -379,7 +462,9 @@ function MyGigs() {
       return;
     }
 
-    if (String(gig.paymentStatus || "").toUpperCase() === "PAID") {
+    if (
+      String(gig.paymentStatus || "").toUpperCase() === "PAID"
+    ) {
       setNotice("This gig is already marked as paid.");
       return;
     }
@@ -411,9 +496,7 @@ function MyGigs() {
         }
       );
 
-      const result = await readResponse(response);
-
-      console.log("Payment recorded:", result);
+      await readResponse(response);
 
       setNotice(
         `Payment of ${formatBudget(amount)} was recorded successfully.`
@@ -421,7 +504,6 @@ function MyGigs() {
 
       await loadMyGigs(user.id);
     } catch (err) {
-      console.error("Payment recording failed:", err);
       setError(err.message || "Unable to record the payment.");
     } finally {
       setProcessingGigId(null);
@@ -429,7 +511,11 @@ function MyGigs() {
   }
 
   function formatBudget(amount) {
-    if (amount === null || amount === undefined || amount === "") {
+    if (
+      amount === null ||
+      amount === undefined ||
+      amount === ""
+    ) {
       return "Not specified";
     }
 
@@ -464,6 +550,18 @@ function MyGigs() {
     return String(application.status || "PENDING").toUpperCase();
   }
 
+  if (!user && loading) {
+    return (
+      <div className="my-gigs-page">
+        <main className="my-gigs-content">
+          <div className="my-gigs-empty">
+            <h3>Loading your workspace...</h3>
+          </div>
+        </main>
+      </div>
+    );
+  }
+
   return (
     <div className="my-gigs-page">
       <header className="my-gigs-navbar">
@@ -484,13 +582,16 @@ function MyGigs() {
       <main className="my-gigs-content">
         <section className="my-gigs-heading">
           <div>
-            <span className="my-gigs-eyebrow">CLIENT WORKSPACE</span>
+            <span className="my-gigs-eyebrow">
+              CLIENT WORKSPACE
+            </span>
+
             <h1>My Gigs</h1>
 
             <p>
               Welcome{user?.name ? `, ${user.name}` : ""}. Manage
               applications, assign freelancers, review work, and track
-              payment status.
+              payments.
             </p>
           </div>
 
@@ -563,8 +664,8 @@ function MyGigs() {
             <div>
               <h2>Your Posted Projects</h2>
               <p>
-                Review applications, assign freelancers, and manage
-                submitted work.
+                Manage drafts, review applications, and track project
+                progress.
               </p>
             </div>
 
@@ -606,6 +707,7 @@ function MyGigs() {
                   gig.status || "UNKNOWN"
                 ).toUpperCase();
 
+                const isDraft = status === "DRAFT";
                 const isAssigned = Boolean(gig.freelancer?.id);
 
                 const isPaid =
@@ -676,6 +778,31 @@ function MyGigs() {
                       </div>
                     )}
 
+                    {/* Draft management actions */}
+                    {isDraft && (
+                      <div className="my-gig-management-actions">
+                        <button
+                          type="button"
+                          className="my-gig-edit-button"
+                          onClick={() => editGig(gig)}
+                          disabled={processingGigId === gig.id}
+                        >
+                          Edit
+                        </button>
+
+                        <button
+                          type="button"
+                          className="my-gig-delete-button"
+                          onClick={() => deleteGig(gig.id)}
+                          disabled={processingGigId === gig.id}
+                        >
+                          {processingGigId === gig.id
+                            ? "Deleting..."
+                            : "Delete"}
+                        </button>
+                      </div>
+                    )}
+
                     {/* Applications */}
                     {["PUBLISHED", "ACCEPTED"].includes(status) && (
                       <div className="my-gig-applications">
@@ -704,7 +831,9 @@ function MyGigs() {
                                   loadingApplications[gig.id]
                                 )}
                               >
-                                Refresh
+                                {loadingApplications[gig.id]
+                                  ? "Refreshing..."
+                                  : "Refresh"}
                               </button>
                             </div>
 
@@ -824,7 +953,9 @@ function MyGigs() {
                         {gig.submittedAt && (
                           <p>
                             <strong>Submitted At:</strong>{" "}
-                            {new Date(gig.submittedAt).toLocaleString()}
+                            {new Date(
+                              gig.submittedAt
+                            ).toLocaleString()}
                           </p>
                         )}
 

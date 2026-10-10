@@ -4253,149 +4253,551 @@
   }
 }
 
-/* Profile Page */
-.profile-container {
-  min-height: 100vh;
-  padding: 40px 20px;
-  background: #f0f7ff;
-  font-family: Arial, sans-serif;
-  box-sizing: border-box;
-}
-
-.profile-card {
-  max-width: 650px;
-  margin: 0 auto;
-  padding: 35px;
-  background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 6px 25px rgba(30, 64, 175, 0.1);
-}
-
-.profile-card h1 {
-  margin: 0 0 8px;
-  color: #1e3a8a;
-  font-size: 30px;
-}
-
-.profile-subtitle {
-  margin-bottom: 28px;
-  color: #64748b;
-}
-
-.profile-details {
-  display: grid;
-  gap: 20px;
-}
-
-.profile-field {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.profile-field label {
-  color: #334155;
-  font-weight: 600;
-}
-
-.profile-field p {
-  margin: 0;
-  padding: 13px;
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  overflow-wrap: anywhere;
-}
-
-.profile-field input {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 13px;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  font-size: 16px;
-  outline: none;
-}
-
-.profile-field input:focus {
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
-}
-
-.profile-actions {
+.my-gig-management-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 28px;
+  gap: 10px;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid #e5edf7;
 }
 
-.profile-button {
-  padding: 12px 20px;
-  border: none;
+.my-gigs-edit-button,
+.my-gigs-publish-button,
+.my-gigs-delete-button {
+  padding: 10px 16px;
+  border: 1px solid #d7e3f5;
   border-radius: 8px;
-  font-size: 15px;
+  background: #ffffff;
+  color: #2458c6;
   font-weight: 600;
   cursor: pointer;
 }
 
-.profile-button.primary {
-  color: white;
-  background: #2563eb;
+.my-gigs-publish-button {
+  background: #e7f8ed;
+  border-color: #b9e8c9;
+  color: #13743b;
 }
 
-.profile-button.primary:hover {
-  background: #1d4ed8;
+.my-gigs-delete-button {
+  background: #fff0f0;
+  border-color: #f1caca;
+  color: #b42323;
 }
 
-.profile-button.secondary {
-  color: #1e40af;
-  background: #dbeafe;
-}
-
-.profile-button:disabled {
+.my-gigs-edit-button:disabled,
+.my-gigs-publish-button:disabled,
+.my-gigs-delete-button:disabled {
+  opacity: 0.55;
   cursor: not-allowed;
-  opacity: 0.6;
 }
 
-.profile-message {
+.my-gig-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 0;
+  padding: 18px;
+  border: 1px solid #d7e5fa;
+  border-radius: 12px;
+  background: #f7faff;
+}
+
+.my-gig-edit-form label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #23416c;
+}
+
+.my-gig-edit-form input,
+.my-gig-edit-form textarea,
+.my-gig-edit-form select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 12px;
+  border: 1px solid #d5e0ef;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #17365e;
+  font: inherit;
+}
+
+.my-gig-edit-form textarea {
+  resize: vertical;
+}
+
+.my-gig-edit-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.my-gig-edit-columns > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.my-gig-edit-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+@media (max-width: 480px) {
+  .my-gig-edit-columns {
+    grid-template-columns: 1fr;
+  }
+}
+.my-gig-management-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
   margin-top: 18px;
-  padding: 12px;
+  padding-top: 16px;
+  border-top: 1px solid #e5edf7;
+}
+
+.my-gigs-edit-button,
+.my-gigs-publish-button,
+.my-gigs-delete-button {
+  padding: 10px 16px;
+  border: 1px solid #d7e3f5;
   border-radius: 8px;
+  background: #ffffff;
+  color: #2458c6;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.my-gigs-publish-button {
+  background: #e7f8ed;
+  border-color: #b9e8c9;
+  color: #13743b;
+}
+
+.my-gigs-delete-button {
+  background: #fff0f0;
+  border-color: #f1caca;
+  color: #b42323;
+}
+
+.my-gigs-edit-button:disabled,
+.my-gigs-publish-button:disabled,
+.my-gigs-delete-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.my-gig-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 0;
+  padding: 18px;
+  border: 1px solid #d7e5fa;
+  border-radius: 12px;
+  background: #f7faff;
+}
+
+.my-gig-edit-form label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #23416c;
+}
+
+.my-gig-edit-form input,
+.my-gig-edit-form textarea,
+.my-gig-edit-form select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 12px;
+  border: 1px solid #d5e0ef;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #17365e;
+  font: inherit;
+}
+
+.my-gig-edit-form textarea {
+  resize: vertical;
+}
+
+.my-gig-edit-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.my-gig-edit-columns > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.my-gig-edit-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+@media (max-width: 480px) {
+  .my-gig-edit-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== Professional My Gigs Cards ===== */
+
+.my-gigs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  align-items: stretch;
+}
+
+.my-gig-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 28px;
+  border: 1px solid #dce7f5;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 5px 20px rgba(30, 64, 175, 0.05);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.my-gig-card:hover {
+  transform: translateY(-3px);
+  border-color: #b8d4ff;
+  box-shadow: 0 12px 28px rgba(30, 64, 175, 0.09);
+}
+
+.my-gig-card h3 {
+  margin: 22px 0 12px;
+  color: #16325c;
+  font-size: 21px;
+  font-weight: 750;
+  line-height: 1.45;
   overflow-wrap: anywhere;
 }
 
-.profile-message.success {
-  color: #166534;
-  background: #dcfce7;
+.my-gig-description {
+  color: #536782;
+  font-size: 15px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
 }
 
-.profile-message.error {
-  color: #991b1b;
-  background: #fee2e2;
+.my-gig-budget {
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px solid #e1eaff;
+  border-radius: 12px;
+  background: #f6f9ff;
 }
 
-.profile-back {
-  display: inline-block;
-  margin-bottom: 20px;
-  color: #1d4ed8;
-  text-decoration: none;
+.my-gig-budget span,
+.my-gig-meta span {
+  display: block;
+  margin-bottom: 7px;
+  color: #75859e;
+  font-size: 12px;
   font-weight: 600;
 }
 
-.profile-back:hover {
+.my-gig-budget strong {
+  color: #2459c4;
+  font-size: 21px;
+  font-weight: 750;
+}
+
+.my-gig-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin: 22px 0;
+}
+
+.my-gig-meta strong {
+  color: #243b5b;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.my-gig-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 2px 0 22px;
+}
+
+.my-gig-skills span {
+  max-width: 100%;
+  padding: 7px 11px;
+  border: 1px solid #e0e8f5;
+  border-radius: 7px;
+  background: #f8faff;
+  color: #455a78;
+  font-size: 12px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+/* Edit and Delete actions */
+
+.my-gig-management-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #e8eef7;
+}
+
+.my-gig-management-actions button,
+.my-gig-management-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 10px 20px;
+  border: 1px solid #d6e2f4;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #2459c4;
+  font-size: 14px;
+  font-weight: 650;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.my-gig-management-actions button:hover,
+.my-gig-management-actions a:hover {
+  transform: translateY(-1px);
+  border-color: #8eb5ff;
+  background: #f1f6ff;
+}
+
+/* Delete button */
+
+.my-gig-management-actions .delete-button {
+  border-color: #fecaca;
+  background: #fff7f7;
+  color: #c62828;
+}
+
+.my-gig-management-actions .delete-button:hover {
+  border-color: #f87171;
+  background: #feecec;
+}
+
+/* Applications area */
+
+.my-gig-applications {
+  margin-top: 12px;
+}
+
+.my-gig-applications > button {
+  min-height: 44px;
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 10px;
+  background: #3568ed;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 650;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.my-gig-applications > button:hover {
+  background: #2454d8;
+}
+
+.my-gig-applications-panel {
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px solid #e0e9f6;
+  border-radius: 12px;
+  background: #f9fbff;
+}
+
+/* Keep footer links aligned at the bottom */
+
+.my-gig-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid #e8eef7;
+}
+
+.my-gig-actions a {
+  color: #285ee7;
+  font-size: 13px;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.my-gig-actions a:hover {
+  color: #163fae;
   text-decoration: underline;
 }
 
-@media (max-width: 600px) {
-  .profile-container {
-    padding: 20px 12px;
+.my-gig-actions span {
+  color: #8a9ab1;
+  font-size: 12px;
+}
+
+/* Tablet and mobile layout */
+
+@media (max-width: 900px) {
+  .my-gigs-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .my-gig-card {
+    padding: 20px;
+    border-radius: 16px;
   }
 
-  .profile-card {
-    padding: 22px;
+  .my-gig-card h3 {
+    font-size: 19px;
   }
 
-  .profile-card h1 {
-    font-size: 25px;
+  .my-gig-meta {
+    gap: 12px;
+  }
+
+  .my-gig-management-actions button,
+  .my-gig-management-actions a {
+    flex: 1;
+  }
+
+  .my-gig-actions {
+    justify-content: flex-start;
+  }
+}
+/* Create Gig - professional submit section */
+.gig-form-submit-area {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  margin-top: 32px;
+  padding-top: 26px;
+  border-top: 1px solid #e6edf7;
+}
+
+.gig-form-submit-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.gig-form-submit-info h3 {
+  margin: 0 0 8px;
+  color: #17345f;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.gig-form-submit-info p {
+  max-width: 440px;
+  margin: 0;
+  color: #71829b;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.gig-form-submit-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.gig-form-submit-actions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 23px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.gig-form-submit-actions .gig-draft-button {
+  color: #285ee8;
+  background: #ffffff;
+  border: 1px solid #cddcff;
+}
+
+.gig-form-submit-actions .gig-draft-button:hover:not(:disabled) {
+  background: #f3f7ff;
+  border-color: #8eafff;
+  transform: translateY(-1px);
+}
+
+.gig-form-submit-actions .gig-submit-button {
+  color: #ffffff;
+  background: #2f65e9;
+  border: 1px solid #2f65e9;
+}
+
+.gig-form-submit-actions .gig-submit-button:hover:not(:disabled) {
+  background: #214fc8;
+  border-color: #214fc8;
+  transform: translateY(-1px);
+}
+
+.gig-form-submit-actions button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+@media (max-width: 700px) {
+  .gig-form-submit-area {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .gig-form-submit-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .gig-form-submit-actions button {
+    width: 100%;
   }
 }

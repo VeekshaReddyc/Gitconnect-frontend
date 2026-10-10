@@ -43,7 +43,8 @@
   line-height: 1.6;
 }
 
-.payment-refresh {
+.payment-refresh,
+.payment-retry {
   min-height: 44px;
   padding: 10px 16px;
   border: 1px solid #bfdbfe;
@@ -55,8 +56,14 @@
   cursor: pointer;
 }
 
-.payment-refresh:hover {
+.payment-refresh:hover,
+.payment-retry:hover {
   background: #dbeafe;
+}
+
+.payment-refresh:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .payment-summary {
@@ -206,6 +213,10 @@
   background: #fef2f2;
   color: #991b1b;
   overflow-wrap: anywhere;
+}
+
+.payment-error p {
+  margin: 0 0 12px;
 }
 
 @media (max-width: 600px) {
