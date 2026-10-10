@@ -1,0 +1,142 @@
+.gc-navbar {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 20px;
+padding: 14px 32px;
+background: #ffffff;
+border-bottom: 1px solid #e5eaf2;
+box-shadow: 0 3px 12px rgba(15, 23, 42, 0.06);
+position: relative;
+z-index: 100;
+flex-wrap: wrap;
+}
+
+.gc-navbar-brand {
+display: flex;
+align-items: center;
+gap: 10px;
+color: #142b52;
+text-decoration: none;
+font-size: 21px;
+font-weight: 800;
+white-space: nowrap;
+}
+
+.gc-brand-icon {
+display: flex;
+align-items: center;
+justify-content: center;
+width: 38px;
+height: 38px;
+border-radius: 12px;
+background: linear-gradient(135deg, #2563eb, #1d4ed8);
+color: #ffffff;
+font-size: 21px;
+font-weight: 800;
+}
+
+.gc-navbar-links {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 8px;
+flex-wrap: wrap;
+}
+
+.gc-nav-link {
+padding: 10px 13px;
+border-radius: 9px;
+color: #526078;
+text-decoration: none;
+font-size: 14px;
+font-weight: 600;
+transition: background 0.2s ease, color 0.2s ease;
+}
+
+.gc-nav-link:hover,
+.gc-nav-link.active {
+background: #eff5ff;
+color: #2563eb;
+}
+
+.gc-navbar-account {
+display: flex;
+align-items: center;
+gap: 14px;
+}
+
+.gc-nav-profile {
+display: flex;
+align-items: center;
+gap: 9px;
+color: #172b4d;
+text-decoration: none;
+font-size: 14px;
+font-weight: 600;
+}
+
+.gc-nav-avatar {
+display: flex;
+align-items: center;
+justify-content: center;
+width: 36px;
+height: 36px;
+border-radius: 50%;
+background: #dbeafe;
+color: #1d4ed8;
+font-weight: 800;
+}
+
+.gc-nav-logout {
+padding: 9px 15px;
+border: 1px solid #dbe3ef;
+border-radius: 9px;
+background: #ffffff;
+color: #334155;
+font-size: 14px;
+font-weight: 600;
+cursor: pointer;
+transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.gc-nav-logout:hover {
+background: #fff1f2;
+border-color: #fecdd3;
+color: #be123c;
+}
+
+@media (max-width: 900px) {
+.gc-navbar {
+padding: 14px 18px;
+}
+
+.gc-navbar-links {
+order: 3;
+width: 100%;
+justify-content: flex-start;
+}
+
+.gc-navbar-account {
+margin-left: auto;
+}
+}
+
+@media (max-width: 480px) {
+.gc-navbar {
+gap: 12px;
+}
+
+.gc-navbar-brand {
+font-size: 18px;
+}
+
+.gc-nav-username {
+display: none;
+}
+
+.gc-nav-link {
+padding: 9px 10px;
+font-size: 12px;
+}
+}
