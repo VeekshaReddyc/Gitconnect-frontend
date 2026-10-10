@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../App.css";
 
-const API_URL = "http://localhost:8081/api/gigs";
+const API_URL = "https://gigconnect-backend-in1g.onrender.com/api/gigs";
 
 function MyGigs() {
   const navigate = useNavigate();

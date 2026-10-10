@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Profile.css";
 
-const API = "http://localhost:8081/api";
+const API = "https://gigconnect-backend-in1g.onrender.com/api";
 
 export default function Profile() {
   const navigate = useNavigate();

@@ -28,7 +28,7 @@ function Register() {
 
     try {
       const response = await fetch(
-        "http://localhost:8081/api/auth/register",
+        "https://gigconnect-backend-in1g.onrender.com/api/auth/register",
         {
           method: "POST",
           headers: {

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import "./PaymentHistory.css";
 
-const API_URL = "http://localhost:8081/api/payments";
+const API_URL = "https://gigconnect-backend-in1g.onrender.com/api/payments";
 
 export default function PaymentHistory({ user }) {
   const [payments, setPayments] = useState([]);

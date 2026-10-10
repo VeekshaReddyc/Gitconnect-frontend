@@ -19,7 +19,7 @@ function Login() {
       console.log("Attempting login...");
 
       const response = await fetch(
-        "http://localhost:8081/api/auth/login",
+        "https://gigconnect-backend-in1g.onrender.com/api/auth/login",
         {
           method: "POST",
           headers: {

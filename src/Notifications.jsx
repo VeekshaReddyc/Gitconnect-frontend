@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from "react";
 
 function Notifications() {
@@ -16,6 +15,8 @@ function Notifications() {
 
   const user = JSON.parse(localStorage.getItem("user") || "{}");
 
+  const API_URL = "https://gigconnect-backend-in1g.onrender.com";
+
   useEffect(() => {
     if (!user.id || user.role?.toUpperCase() !== "FREELANCER") {
       return;
@@ -24,7 +25,7 @@ function Notifications() {
     const fetchNotifications = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8081/api/notifications/freelancer/${user.id}`
+          `${API_URL}/api/notifications/freelancer/${user.id}`
         );
 
         if (!response.ok) {
@@ -58,7 +59,6 @@ function Notifications() {
 
     let left = bellRect.right - dropdownWidth;
 
-    // Keep the dropdown completely inside the screen.
     left = Math.max(
       screenPadding,
       Math.min(left, window.innerWidth - dropdownWidth - screenPadding)
@@ -66,8 +66,8 @@ function Notifications() {
 
     let top = bellRect.bottom + gap;
 
-    // If there is insufficient space below, display it above the button.
     const availableBelow = window.innerHeight - top;
+
     const estimatedDropdownHeight = Math.min(
       dropdownRef.current?.scrollHeight || 400,
       window.innerHeight * 0.7
@@ -132,8 +132,10 @@ function Notifications() {
   const markAsRead = async (notificationId) => {
     try {
       const response = await fetch(
-        `http://localhost:8081/api/notifications/${notificationId}/read?freelancerId=${user.id}`,
-        { method: "PATCH" }
+        `${API_URL}/api/notifications/${notificationId}/read?freelancerId=${user.id}`,
+        {
+          method: "PATCH",
+        }
       );
 
       if (!response.ok) {
@@ -169,7 +171,9 @@ function Notifications() {
         onClick={() => setOpen((previous) => !previous)}
         style={styles.bell}
         aria-expanded={open}
-        aria-label={`Notifications${unreadCount > 0 ? `, ${unreadCount} unread` : ""}`}
+        aria-label={`Notifications${
+          unreadCount > 0 ? `, ${unreadCount} unread` : ""
+        }`}
       >
         🔔 Notifications
         {unreadCount > 0 && (
@@ -378,4 +382,3 @@ const styles = {
 };
 
 export default Notifications;
-
