@@ -1,4 +1,9 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -13,111 +18,114 @@ import Profile from "./Profile";
 import Navbar from "./components/Navbar";
 
 function App() {
-const storedUser = localStorage.getItem("user");
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={<Navigate to="/login" replace />}
+        />
 
-let user = null;
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
 
-try {
-user = storedUser ? JSON.parse(storedUser) : null;
-} catch {
-user = null;
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Navbar />
+              <Notifications />
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/create-gig"
+          element={
+            <ProtectedRoute>
+              <Navbar />
+              <Notifications />
+              <CreateGig />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/browse-gigs"
+          element={
+            <ProtectedRoute>
+              <Navbar />
+              <Notifications />
+              <BrowseGigs />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/my-gigs"
+          element={
+            <ProtectedRoute>
+              <Navbar />
+              <Notifications />
+              <MyGigs />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/freelancer-my-gigs"
+          element={
+            <ProtectedRoute>
+              <Navbar />
+              <Notifications />
+              <FreelancerMyGigs />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/payment-history"
+          element={
+            <ProtectedRoute>
+              <Navbar />
+              <Notifications />
+              <PaymentHistory />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Navbar />
+              <Notifications />
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="*"
+          element={<Navigate to="/login" replace />}
+        />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-const requireLogin = (element) =>
-user ? element : <Navigate to="/login" replace />;
+function ProtectedRoute({ children }) {
+  let user = null;
 
-return ( <BrowserRouter> <Routes>
-<Route path="/" element={<Navigate to="/login" replace />} />
+  try {
+    const storedUser = localStorage.getItem("user");
+    user = storedUser ? JSON.parse(storedUser) : null;
+  } catch {
+    user = null;
+  }
 
-```
-    <Route path="/login" element={<Login />} />
-    <Route path="/register" element={<Register />} />
-
-    <Route
-      path="/dashboard"
-      element={
-        requireLogin(
-          <>
-            <Navbar />
-            <Notifications />
-            <Dashboard />
-          </>
-        )
-      }
-    />
-
-    <Route
-      path="/create-gig"
-      element={requireLogin(
-        <>
-          <Navbar />
-          <Notifications />
-          <CreateGig />
-        </>
-      )}
-    />
-
-    <Route
-      path="/browse-gigs"
-      element={requireLogin(
-        <>
-          <Navbar />
-          <Notifications />
-          <BrowseGigs />
-        </>
-      )}
-    />
-
-    <Route
-      path="/my-gigs"
-      element={requireLogin(
-        <>
-          <Navbar />
-          <Notifications />
-          <MyGigs />
-        </>
-      )}
-    />
-
-    <Route
-      path="/freelancer-my-gigs"
-      element={requireLogin(
-        <>
-          <Navbar />
-          <Notifications />
-          <FreelancerMyGigs />
-        </>
-      )}
-    />
-
-    <Route
-      path="/payment-history"
-      element={requireLogin(
-        <>
-          <Navbar />
-          <Notifications />
-          <PaymentHistory user={user} />
-        </>
-      )}
-    />
-
-    <Route
-      path="/profile"
-      element={requireLogin(
-        <>
-          <Navbar />
-          <Notifications />
-          <Profile />
-        </>
-      )}
-    />
-
-    <Route path="*" element={<Navigate to="/login" replace />} />
-  </Routes>
-</BrowserRouter>
-
-
-);
+  return user ? <>{children}</> : <Navigate to="/login" replace />;
 }
 
 export default App;
