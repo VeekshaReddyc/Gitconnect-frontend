@@ -1,0 +1,640 @@
+/* =========================================================
+   GIGCONNECT - CREATE GIG
+   Professional Upwork/Fiverr inspired design
+   Scoped to Create Gig page only
+   ========================================================= */
+
+.gig-page {
+  min-height: 100vh;
+  background: #f8fafc;
+  color: #172b4d;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+  padding-bottom: 50px;
+}
+
+.gig-page *,
+.gig-page *::before,
+.gig-page *::after {
+  box-sizing: border-box;
+}
+
+/* ================= CONTAINER ================= */
+
+.gig-container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 28px 32px 0;
+}
+
+/* ================= BREADCRUMB ================= */
+
+.gig-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 28px;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.gig-breadcrumb a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.gig-breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+/* ================= HEADER ================= */
+
+.gig-page-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.gig-eyebrow {
+  margin: 0 0 9px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.gig-page-header h1 {
+  margin: 0;
+  color: #102a43;
+  font-size: 36px;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.gig-page-description {
+  margin: 10px 0 0;
+  color: #64748b;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ================= BACK BUTTON ================= */
+
+.gig-back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  flex-shrink: 0;
+  padding: 9px 14px;
+  border: 1px solid #dbe3ee;
+  border-radius: 7px;
+  background: #fff;
+  color: #334e68;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.15s ease;
+}
+
+.gig-back-button:hover {
+  border-color: #bfdbfe;
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+/* ================= ERROR ================= */
+
+.gig-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 24px 0 0;
+  padding: 13px 15px;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  background: #fef2f2;
+  color: #991b1b;
+}
+
+.gig-error-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #dc2626;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.gig-error p {
+  margin: 1px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ================= FORM CARD ================= */
+
+.gig-form-card {
+  width: 100%;
+  max-width: 880px;
+  margin: 28px auto 0;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+}
+
+/* ================= FORM SECTION ================= */
+
+.gig-form-section {
+  padding: 34px 38px;
+}
+
+.gig-section-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.gig-section-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: #eff6ff;
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.gig-section-header h2 {
+  margin: 0;
+  color: #102a43;
+  font-size: 22px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.gig-section-header p {
+  margin: 5px 0 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ================= FIELDS ================= */
+
+.gig-field {
+  margin-bottom: 24px;
+}
+
+.gig-field:last-child {
+  margin-bottom: 0;
+}
+
+.gig-field label {
+  display: block;
+  margin-bottom: 8px;
+  color: #172b4d;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.gig-required {
+  color: #2563eb;
+  font-weight: 700;
+}
+
+/* ================= INPUTS ================= */
+
+.gig-page input[type="text"],
+.gig-page input[type="number"],
+.gig-page input[type="date"],
+.gig-page input[type="email"],
+.gig-page input[type="url"],
+.gig-page select,
+.gig-page textarea {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  outline: none;
+  background: #fff;
+  color: #172b4d;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.5;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.gig-page input[type="text"],
+.gig-page input[type="number"],
+.gig-page input[type="date"],
+.gig-page input[type="email"],
+.gig-page input[type="url"],
+.gig-page select {
+  height: 45px;
+  padding: 0 13px;
+}
+
+.gig-page textarea {
+  min-height: 155px;
+  padding: 12px 13px;
+  resize: vertical;
+}
+
+/* ================= PLACEHOLDER ================= */
+
+.gig-page input::placeholder,
+.gig-page textarea::placeholder {
+  color: #94a3b8;
+}
+
+/* ================= FOCUS ================= */
+
+.gig-page input:focus,
+.gig-page select:focus,
+.gig-page textarea:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* ================= SELECT ================= */
+
+.gig-page select {
+  cursor: pointer;
+}
+
+/* ================= GRID ================= */
+
+.gig-field-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+/* ================= COUNTER ================= */
+
+.gig-character-count {
+  margin: 6px 0 0;
+  color: #94a3b8;
+  font-size: 12px;
+  text-align: right;
+}
+
+/* ================= HINT ================= */
+
+.gig-field-hint {
+  margin: 7px 0 0;
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* ================= DIVIDER ================= */
+
+.gig-section-divider {
+  height: 1px;
+  margin: 0 38px;
+  background: #e2e8f0;
+}
+
+/* ================= CURRENCY ================= */
+
+.gig-currency-input {
+  position: relative;
+}
+
+.gig-currency-input > span {
+  position: absolute;
+  top: 50%;
+  left: 13px;
+  z-index: 1;
+  transform: translateY(-50%);
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.gig-currency-input input {
+  padding-left: 32px !important;
+}
+
+/* ================= PUBLISH NOTE ================= */
+
+.gig-publish-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  margin: 0 38px;
+  padding: 14px 15px;
+  border: 1px solid #dbeafe;
+  border-radius: 8px;
+  background: #f8fbff;
+}
+
+.gig-publish-note-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 21px;
+  height: 21px;
+  border: 1px solid #93c5fd;
+  border-radius: 50%;
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.gig-publish-note p {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0;
+  color: #475569;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.gig-publish-note strong {
+  color: #172b4d;
+  font-size: 13px;
+}
+
+/* ================= FORM FOOTER ================= */
+
+.gig-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 28px;
+  padding: 20px 38px;
+  border-top: 1px solid #e2e8f0;
+  background: #fafcff;
+}
+
+/* ================= SECONDARY BUTTON ================= */
+
+.gig-secondary-button {
+  min-height: 43px;
+  padding: 0 18px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  background: #fff;
+  color: #334e68;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+
+.gig-secondary-button:hover:not(:disabled) {
+  border-color: #94a3b8;
+  background: #f8fafc;
+  color: #172b4d;
+}
+
+.gig-secondary-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ================= PRIMARY BUTTON ================= */
+
+.gig-primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 43px;
+  padding: 0 21px;
+  border: 1px solid #2563eb;
+  border-radius: 7px;
+  background: #2563eb;
+  color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+
+.gig-primary-button:hover:not(:disabled) {
+  border-color: #1d4ed8;
+  background: #1d4ed8;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.18);
+}
+
+.gig-primary-button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.gig-primary-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* ================= FOOTER ================= */
+
+.gig-page-footer {
+  margin: 22px 0 0;
+  color: #94a3b8;
+  font-size: 12px;
+  text-align: center;
+}
+
+.gig-page-footer span {
+  padding: 0 5px;
+}
+
+/* ================= ACCESS / LOADING ================= */
+
+.gig-access-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  background: #f8fafc;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+.gig-access-card,
+.gig-loading-card {
+  width: min(100%, 450px);
+  padding: 36px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #fff;
+  text-align: center;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+}
+
+.gig-access-eyebrow {
+  margin: 0 0 10px;
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.gig-access-card h1,
+.gig-loading-card h2 {
+  margin: 0;
+  color: #102a43;
+}
+
+.gig-access-card p,
+.gig-loading-card p {
+  margin: 10px 0 24px;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ================= LOADER ================= */
+
+.gig-spinner {
+  display: block;
+  width: 32px;
+  height: 32px;
+  margin: 0 auto 18px;
+  border: 3px solid #dbeafe;
+  border-top-color: #2563eb;
+  border-radius: 50%;
+  animation: gig-spin 0.75s linear infinite;
+}
+
+@keyframes gig-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ================= TABLET ================= */
+
+@media (max-width: 768px) {
+  .gig-container {
+    padding: 22px 18px 0;
+  }
+
+  .gig-page-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .gig-page-header h1 {
+    font-size: 30px;
+  }
+
+  .gig-form-card {
+    margin-top: 22px;
+  }
+
+  .gig-form-section {
+    padding: 28px 24px;
+  }
+
+  .gig-section-divider {
+    margin: 0 24px;
+  }
+
+  .gig-field-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .gig-publish-note {
+    margin: 0 24px;
+  }
+
+  .gig-form-footer {
+    padding: 18px 24px;
+  }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 520px) {
+  .gig-container {
+    padding: 18px 14px 0;
+  }
+
+  .gig-breadcrumb {
+    margin-bottom: 20px;
+  }
+
+  .gig-page-header h1 {
+    font-size: 27px;
+  }
+
+  .gig-page-description {
+    font-size: 14px;
+  }
+
+  .gig-form-section {
+    padding: 24px 18px;
+  }
+
+  .gig-section-header {
+    gap: 11px;
+  }
+
+  .gig-section-header h2 {
+    font-size: 19px;
+  }
+
+  .gig-section-divider {
+    margin: 0 18px;
+  }
+
+  .gig-publish-note {
+    margin: 0 18px;
+  }
+
+  .gig-form-footer {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    padding: 18px;
+  }
+
+  .gig-secondary-button,
+  .gig-primary-button {
+    width: 100%;
+  }
+}

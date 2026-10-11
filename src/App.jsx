@@ -1,3 +1,4 @@
+
 import {
   BrowserRouter,
   Routes,
@@ -39,6 +40,19 @@ function ProtectedRoute({ children }) {
   );
 }
 
+// Shared layout for protected pages.
+function ProtectedLayout({ children }) {
+  return (
+    <ProtectedRoute>
+      <>
+        <Navbar />
+        <Notifications />
+        {children}
+      </>
+    </ProtectedRoute>
+  );
+}
+
 function App() {
   return (
     <BrowserRouter>
@@ -64,83 +78,69 @@ function App() {
         <Route
           path="/dashboard"
           element={
-            <ProtectedRoute>
-              <>
-                <Navbar />
-                <Notifications />
-                <Dashboard />
-              </>
-            </ProtectedRoute>
+            <ProtectedLayout>
+              <Dashboard />
+            </ProtectedLayout>
           }
         />
 
-        {/* Create Gig */}
+        {/* Create a new gig */}
         <Route
           path="/create-gig"
           element={
-            <ProtectedRoute>
-              <>
-                <Navbar />
-                <Notifications />
-                <CreateGig />
-              </>
-            </ProtectedRoute>
+            <ProtectedLayout>
+              <CreateGig />
+            </ProtectedLayout>
           }
         />
 
-        {/* Browse Gigs */}
+        {/* Edit an existing saved draft */}
+        <Route
+          path="/edit-gig/:id"
+          element={
+            <ProtectedLayout>
+              <CreateGig />
+            </ProtectedLayout>
+          }
+        />
+
+        {/* Browse gigs */}
         <Route
           path="/browse-gigs"
           element={
-            <ProtectedRoute>
-              <>
-                <Navbar />
-                <Notifications />
-                <BrowseGigs />
-              </>
-            </ProtectedRoute>
+            <ProtectedLayout>
+              <BrowseGigs />
+            </ProtectedLayout>
           }
         />
 
-        {/* My Gigs */}
+        {/* Client's gigs and saved drafts */}
         <Route
           path="/my-gigs"
           element={
-            <ProtectedRoute>
-              <>
-                <Navbar />
-                <Notifications />
-                <MyGigs />
-              </>
-            </ProtectedRoute>
+            <ProtectedLayout>
+              <MyGigs />
+            </ProtectedLayout>
           }
         />
 
-        {/* Freelancer My Gigs */}
+        {/* Freelancer's gigs */}
         <Route
           path="/freelancer-my-gigs"
           element={
-            <ProtectedRoute>
-              <>
-                <Navbar />
-                <Notifications />
-                <FreelancerMyGigs />
-              </>
-            </ProtectedRoute>
+            <ProtectedLayout>
+              <FreelancerMyGigs />
+            </ProtectedLayout>
           }
         />
 
-        {/* Payment History */}
+        {/* Payment history */}
         <Route
           path="/payment-history"
           element={
-            <ProtectedRoute>
-              <>
-                <Navbar />
-                <Notifications />
-                <PaymentHistory user={getLoggedInUser()} />
-              </>
-            </ProtectedRoute>
+            <ProtectedLayout>
+              <PaymentHistory user={getLoggedInUser()} />
+            </ProtectedLayout>
           }
         />
 
@@ -148,13 +148,9 @@ function App() {
         <Route
           path="/profile"
           element={
-            <ProtectedRoute>
-              <>
-                <Navbar />
-                <Notifications />
-                <Profile />
-              </>
-            </ProtectedRoute>
+            <ProtectedLayout>
+              <Profile />
+            </ProtectedLayout>
           }
         />
 
@@ -169,3 +165,4 @@ function App() {
 }
 
 export default App;
+

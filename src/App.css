@@ -4801,3 +4801,171 @@
     width: 100%;
   }
 }
+
+/* ===== GIGCONNECT FORM OVERRIDES ===== */
+
+.gigconnect-form-page,
+.gigconnect-form-page * {
+  box-sizing: border-box;
+}
+
+.gigconnect-form-page {
+  min-height: 100vh;
+  padding: 40px 24px;
+  background: #f4f7fc;
+  color: #172b4d;
+  font-family: Inter, "Segoe UI", sans-serif;
+}
+
+.gigconnect-form-container {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.gigconnect-form-card {
+  overflow: hidden;
+  border: 1px solid #e1e8f2;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 8px 30px rgba(23, 43, 77, 0.07);
+}
+
+.gigconnect-form-content {
+  padding: 36px;
+}
+
+.gigconnect-form-title {
+  color: #172b4d;
+  font-size: 34px;
+  font-weight: 750;
+  letter-spacing: -1px;
+}
+
+.gigconnect-form-subtitle,
+.gigconnect-section-description {
+  color: #667892;
+  line-height: 1.7;
+}
+
+.gigconnect-section-heading {
+  color: #172b4d;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.gigconnect-fields-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.gigconnect-field {
+  min-width: 0;
+}
+
+.gigconnect-field-full {
+  grid-column: 1 / -1;
+}
+
+.gigconnect-field label {
+  color: #344563;
+  font-weight: 650;
+}
+
+.gigconnect-field input,
+.gigconnect-field select,
+.gigconnect-field textarea {
+  width: 100%;
+  border: 1px solid #cbd6e5;
+  border-radius: 8px;
+  background: #fff;
+  color: #172b4d;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.gigconnect-field input,
+.gigconnect-field select {
+  min-height: 46px;
+  padding: 0 13px;
+}
+
+.gigconnect-field textarea {
+  min-height: 150px;
+  padding: 13px;
+}
+
+.gigconnect-field input:focus,
+.gigconnect-field select:focus,
+.gigconnect-field textarea:focus {
+  border-color: #3563e9;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(53, 99, 233, 0.12);
+}
+
+.gigconnect-section-divider {
+  border: 0;
+  border-top: 1px solid #e7edf5;
+}
+
+.gigconnect-button {
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: 8px;
+  font-weight: 650;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.gigconnect-button-primary {
+  border: 1px solid #315fe8;
+  background: #315fe8;
+  color: #fff;
+}
+
+.gigconnect-button-primary:hover:not(:disabled) {
+  border-color: #244bc5;
+  background: #244bc5;
+}
+
+.gigconnect-button-secondary {
+  border: 1px solid #d1dbea;
+  background: #fff;
+  color: #344563;
+}
+
+.gigconnect-button-secondary:hover:not(:disabled) {
+  background: #f3f6fb;
+}
+
+.gigconnect-back-link {
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+@media (max-width: 640px) {
+  .gigconnect-form-page {
+    padding: 24px 14px;
+  }
+
+  .gigconnect-form-content {
+    padding: 22px 18px;
+  }
+
+  .gigconnect-fields-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gigconnect-field-full {
+    grid-column: auto;
+  }
+
+  .gigconnect-form-actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .gigconnect-form-actions .gigconnect-button {
+    width: 100%;
+  }
+}
